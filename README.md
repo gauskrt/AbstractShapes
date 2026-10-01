@@ -7,6 +7,22 @@ rectangles, ellipses, circles, Bézier curves and polygons. It is a Python
 recreation of [**primitive**](https://github.com/fogleman/primitive) by
 Michael Fogleman.
 
+## Website
+
+`docs/index.html` is a GitHub Pages site explaining what the project is about and how
+it works, using a painting by Raja Ravi Varma as the example input. The
+`Deploy site to GitHub Pages` workflow (`.github/workflows/pages.yml`) runs on every
+push to `main`: it downloads the painting from Wikimedia Commons, generates the shape
+reconstructions with `scripts/make_gallery.py`, and publishes `docs/`.
+
+To turn it on: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+To preview locally:
+
+```bash
+python scripts/make_gallery.py path/to/painting.jpg   # writes docs/images/
+python -m http.server -d docs
+```
+
 ## How it works
 
 The goal is to find the one shape that, drawn on top of the current canvas,
@@ -110,6 +126,10 @@ with geometric primitives"* — created by
 License. The algorithm, the shape modes and their numbering, the command-line
 flags and the overall approach all come from his original Go implementation.
 All credit for the idea goes to him; any bugs here are our own.
+
+The example painting on the website is *Shakuntala Patralekhan* by
+**Raja Ravi Varma** (1848–1906), which is in the public domain, via
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma_-_Shakuntala_writing_a_love_letter_on_a_lotus_leaf.jpg).
 
 ## License
 
